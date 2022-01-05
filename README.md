@@ -6,3 +6,4 @@
 - Yêu cầu viết Unittest cho biz class
 - Yêu cầu tất cả các method đề có log start-end với một số thông tin cơ bản
  - Hello
+ - Tôi là Long.
