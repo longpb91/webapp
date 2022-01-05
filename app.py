@@ -16,5 +16,10 @@ def get_book_details():
     published=request.args.get('published')
     return "Author : {}, Published: {}".format(author,published)
 
+@app.route("/longpb")
+def get_my_name():
+    return "Tôi là Long"
+
+    
 if __name__ == '__main__':
     app.run()
