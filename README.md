@@ -5,3 +5,4 @@
 - Các biz logic class cung cấp các API cho UI
 - Yêu cầu viết Unittest cho biz class
 - Yêu cầu tất cả các method đề có log start-end với một số thông tin cơ bản
+ - Hello
