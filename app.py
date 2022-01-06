@@ -9,8 +9,8 @@ import traceback
 
 app = Flask(__name__)
 
-# ENV = 'dev'
-ENV = 'prod'
+ENV = 'dev'
+# ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -74,4 +74,3 @@ def submit():
 if __name__ == "__main__":
     # app.debug = True
     app.run()
-
