@@ -41,10 +41,6 @@ class Feedback(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/getenvironment')
-def environment():
-    return os.environ.get('LONGPB')
-
 @app.route("/submit", methods=['POST'])
 def submit():
     try:

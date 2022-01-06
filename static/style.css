@@ -69,3 +69,15 @@ textarea {
 	outline: none;
 	margin-top: 1rem;
 }
+
+input[type=button] {
+	display: block;
+	width: 100%;
+	background: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	outline: none;
+	margin-top: 1rem;
+  }
