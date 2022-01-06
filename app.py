@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+import os
+
 
 app = Flask(__name__)
 
-# ENV = 'dev'
-ENV = 'prod'
+ENV = 'dev'
+# ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
@@ -34,6 +36,10 @@ class Feedback(db.Model):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/getenvironment')
+def environment():
+    return os.environ.get('LONGPB')
 
 @app.route("/submit", methods=['POST'])
 def submit():
