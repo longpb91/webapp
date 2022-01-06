@@ -9,16 +9,16 @@ import traceback
 
 app = Flask(__name__)
 
-ENV = 'dev'
-# ENV = 'prod'
+# ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:bltqa180419@localhost/lexus'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL_DEV')
 else:
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL_2')
-
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL_2') 
+    print(os.environ.get('DATABASE_URL_2'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -68,9 +68,9 @@ def submit():
     except Exception as e:
         return str(e)
         # return traceback.print_exc()
-        
 
         
 if __name__ == "__main__":
     # app.debug = True
     app.run()
+
