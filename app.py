@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import os
+import traceback
 
 
 app = Flask(__name__)
@@ -43,23 +44,26 @@ def environment():
 
 @app.route("/submit", methods=['POST'])
 def submit():
-    if request.method == "POST":
-        customer = request.form['customer']
-        dealer = request.form['dealer']
-        rating = request.form['rating']
-        comments = request.form['comments']
-        # print(customer, dealer, rating, comments)
-        if customer == "" or dealer == "":
-            return render_template('index.html', message='Please enter required fields')
+    try:
+        if request.method == "POST":
+            customer = request.form['customer']
+            dealer = request.form['dealer']
+            rating = request.form['rating']
+            comments = request.form['comments']
+            # print(customer, dealer, rating, comments)
+            if customer == "" or dealer == "":
+                return render_template('index.html', message='Please enter required fields')
 
-        if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
-            # add data to database
-            data = Feedback(customer, dealer, rating, comments)
-            db.session.add(data)
-            db.session.commit()
+            if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
+                # add data to database
+                data = Feedback(customer, dealer, rating, comments)
+                db.session.add(data)
+                db.session.commit()
 
-            return render_template('success.html')
-        return render_template('index.html', message='You have already submitted feedback')
+                return render_template('success.html')
+            return render_template('index.html', message='You have already submitted feedback')
+    except:
+        return traceback.print_exc()
         
 
         
