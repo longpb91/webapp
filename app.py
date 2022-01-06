@@ -65,8 +65,8 @@ def submit():
 
                 return render_template('success.html')
             return render_template('index.html', message='You have already submitted feedback')
-    except Exception:
-        return Exception
+    except Exception as e:
+        return str(e)
         # return traceback.print_exc()
         
 
