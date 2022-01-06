@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import os
 import traceback
+# from dotenv import load_dotenv
+
+# load_dotenv()
 
 
 app = Flask(__name__)
@@ -53,7 +56,7 @@ def submit():
             # print(customer, dealer, rating, comments)
             if customer == "" or dealer == "":
                 return render_template('index.html', message='Please enter required fields')
-
+            
             if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
                 # add data to database
                 data = Feedback(customer, dealer, rating, comments)
@@ -70,3 +73,5 @@ def submit():
 if __name__ == "__main__":
     # app.debug = True
     app.run()
+
+    
