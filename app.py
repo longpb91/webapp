@@ -17,7 +17,7 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:bltqa180419@localhost/lexus'
 else:
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL_2')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
